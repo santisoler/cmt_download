@@ -59,9 +59,32 @@ def download(
         min_depth=min_depth,
         max_depth=max_depth,
     )
-    response = requests.get(url)
-    response.raise_for_status()
-    soup = BeautifulSoup(response.content, "html.parser")
+    header, df = None, None
+    page = 1
+    while True:
+        response = requests.get(url)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Parse website
+        print(f"Processing page {page}")
+        header_i, df_i = _parse_page(soup)
+        if header is None:
+            header = header_i
+        df = df_i if df is None else pd.concat((df, df_i), ignore_index=True)
+        page += 1
+
+        # Check if there are more pages
+        links = [a for a in soup.find_all("a") if a.get_text() == "More solutions"]
+        if not links:
+            break
+        (link,) = links
+        url = link.get("href")
+
+    return header, df
+
+
+def _parse_page(soup: BeautifulSoup):
     pres = soup.find_all("pre")
     header = [s for s in pres[0].get_text().split("\n") if s]
     table = pres[1].get_text()
