@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cmt_download"
+authors = [
+    {name = "Santiago Soler", email = "santisoler@fastmail.com"},
+    {name = "Sebastian Correa Otto", email = "s.correaotto@gmail.com"},
+]
+description = "Download tensor moment from CMT"
+# readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["seismology", "tensor moment", "CMT"]
+license = {text = "MIT License"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "requests",
+    "beautifulsoup4",
+    "pandas",
+]
+dynamic = ["version"]
+
+[tool.setuptools_scm]
+version_scheme =  "post-release"
+local_scheme =  "no-local-version"
+write_to =  "cmt_download/_version.py"
