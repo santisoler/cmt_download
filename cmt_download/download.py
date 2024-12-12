@@ -1,5 +1,5 @@
 """
-Download tensor moments from CMP
+Download tensor moments from CMT
 """
 
 from typing import Optional
