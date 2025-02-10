@@ -17,7 +17,7 @@ FORM = (
     "&otype=ymd&oyr={end_year}&omo={end_month}&oday={end_day}"
     "&jyr=1976&jday=1&ojyr=1976&ojday=1&nday=1"
     "&lmw={mw_min}&umw={mw_max}&lms={ms_min}&ums={ms_max}&lmb={mb_min}&umb={mb_max}"
-    "&llat={south}&ulat={north}llon={west}&ulon={east}&lhd={min_depth}&uhd={max_depth}"
+    "&llat={south}&ulat={north}&llon={west}&ulon={east}&lhd={min_depth}&uhd={max_depth}"
     "&lts=-9999&uts=9999&lpe1=0&upe1=90&lpe2=0&upe2=90&list=6"
 )
 COLUMNS = "lon lat depth mrr mtt mpp mrt mrp mtp iexp COORD_X COORD_Y name".split()
